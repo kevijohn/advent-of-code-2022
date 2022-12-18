@@ -4,7 +4,7 @@
 # Advent of Code 2022
 # DAY 03 PART 02
 
-# My answer: 
+# My answer: 2711 (too low); 2760
 
 from sys import argv
 
@@ -25,16 +25,32 @@ def getPriority(item):
 
 def findBadge(group):
     print(group)
+    outerSearch(group)
     print('----------------------------------------------')
+
+def recurSearch(letter, sacks, listIndex):
+    if sacks[listIndex].find(letter) > -1:
+        if listIndex == len(sacks)-1:
+            print(f'Badge is: {letter}')
+            getPriority(letter)
+            return
+        else:
+            recurSearch(letter, sacks, listIndex+1)
+
+def outerSearch(compList):
+    for letter in ''.join(set(compList[0])):
+        recurSearch(letter, compList, 1)
 
 # MAIN 
 file_handle = open(input_file)
 content = file_handle.readlines()
 line_start = 0
+
  # while file has a group of lines
-while line_start + 3 < len(content):
-    group = content[line_start:line_start + 3]
+while line_start + 3 <= len(content):
+    group = list(map(str.strip, content[line_start:line_start + 3]))
     findBadge(group)
     line_start = line_start + 3
 
+print(f'Sum of priorities is: {priority_sum}')
 
