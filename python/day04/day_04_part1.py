@@ -17,7 +17,8 @@ def processPair(pair):
     elves = pair.split(',')
     elf_1 = elves[0].split('-')
     elf_2 = elves[1].split('-')
-    if (int(elf_1[0]) <= int(elf_2[0]) and int(elf_1[1]) >= int(elf_2[1])) or (int(elf_2[0]) <= int(elf_1[0]) and int(elf_2[1]) >= int(elf_1[1])):
+    if  (int(elf_1[0]) <= int(elf_2[0]) and int(elf_1[1]) >= int(elf_2[1])) or \
+        (int(elf_2[0]) <= int(elf_1[0]) and int(elf_2[1]) >= int(elf_1[1])):
         count_pairs_to_reconsider = count_pairs_to_reconsider + 1
 
 # MAIN 
